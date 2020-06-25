@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        background-color: #72a2ac6b;
+        color: #636b6f;
+        font-family: "Nunito", sans-serif;
+        margin: 0;
+        padding: 0 30px;
+      }
+
+      h1 {
+        margin: 10px auto 0 auto;
+        text-align: center;
+        border-radius: 10px;
+        width: 40%;
+        background-color: #00ffff33;
+      }
+      input[type="text"] {
+        border: none;
+        border-bottom: 2px solid #ad14576e;
+        background-color: #3ca1bc2e;
+        color: #fff7f7e0;
+      }
+      button {
+        background-color: #5e35b1;
+        border: none;
+        color: white;
+        padding: 7px 15px;
+        text-decoration: none;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 20px;
+      }
+    </style>
+    <title>Promedios</title>
+  </head>
+  <body>
+    <h1>Aplicación de Obtención de Promedios</h1>
+    <h3>Agregar Alumno</h3>
+    <form method="post">
+      {% csrf_token %} {{alform}}
+      <button type="submit">Submit</button>
+    </form>
+    <hr />
+
+    <h3>Agregar Materia</h3>
+    <form method="post">
+      {% csrf_token %} {{maform}}
+      <button type="submit">Submit</button>
+    </form>
+    <hr />
+
+    <h3>Agregar Calificacion</h3>
+    <form method="post">
+      {% csrf_token %} {{alMaform}}
+      <button type="submit">Submit</button>
+    </form>
+    <hr />
+
+    <table class="egt">
+      <tr>
+        <td>Nombre del Alumno</td>
+        <td>Materia</td>
+        <td>Calificacion</td>
+      </tr>
+
+      {% for item in Calif %}
+      <tr>
+        <td>{{item.k_alumno.name}}</td>
+        <td>{{item.k_materia.name}}</td>
+        <td>{{item.calif}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    <hr />
+    <h3>Obtener Promedio</h3>
+    <form method="post">
+      {% csrf_token %} {{prom}}
+      <button type="submit">Submit</button>
+    </form>
+    <hr />
+    <p>Promedio: {{promed}}</p>
+  </body>
+</html>
